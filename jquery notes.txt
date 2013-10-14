@@ -1,0 +1,158 @@
+// jQuery notes
+
+// .toggleClass() event
+toggles a class back and forth
+
+
+// adds whatever is in the text field with the name checkListItem
+// to a div with a class name list
+// the last line resets the input text field
+$(document).ready(function() {
+    
+    $('#button').click(function() {
+        var toAdd = $('input[name=checkListItem]').val();
+        var newHtml = '<div class=\'item\'>' + toAdd + '</div>';
+        $('.list').append(newHtml);
+        $('input[name=checkListItem]').val('');
+    });
+    
+});
+
+// removes a class with the name item from the document when clicked
+		//  thing to do  selector	...
+$(document).on('click', '.item', function() {
+    $(this).remove();
+});
+
+$('selector').event(function() {
+	things to do...
+	$('an id').event();
+	i.e.
+	$('#item').hide();
+});
+
+// .dblclick event
+when a user double clicks on an element, do this
+
+// .click event
+when a user clicks on an element do this
+
+
+// .fadeOut event
+fades the element out
+// .fadeIn event
+fades the element in
+ 	 /\
+	 ||
+	 ||
+// one param
+(how fast/slow) - can be the words fast/slow or a number
+// two params
+(how fast/slow, opacity)
+
+// .mouseeneter() event
+happens when the cursor hovers over the element thats targeted
+// .mouseleave() event
+happens when the cursor leaves the element
+// EXAMPLE
+$(document).ready(function() {
+	$('div').mouseenter(function() {
+		$(this).fadeTo('fast', 1); 
+	});
+   
+	$('div').mouseleave(function() {
+		$(this).fadeTo('fast', 0.25);
+	});
+});
+
+
+// .focus event
+occurs when someone clicks on or tabs onto an element
+works only on elements that can receive focus.. usually just <textarea> and <input>
+// EXAMPLE
+$(document).on('focus','input[name=\'name\']', function() {
+	$(this).css('outline-color','red');
+});
+OR
+$(document).ready(function() {
+	$('input[name=\'name\']').focus(function() {
+		$(this).css('outline-color', 'red');
+	});
+});
+
+// .keydown() event
+occurs when a key on the keyboard is pressed
+only works on whatever page element has the focus
+i.e. cursor is on an input field
+
+// .animate() event
+takes two inputs : the animation to perform and the time in which to perform the animation
+// EXAMPLE
+// this will take the first div that jQuery finds and move it 10px to the right
+$('div').animate({left:'+=10px'},100);
+it is just left && bottom
+
+$(document).ready(function() {
+    $(document).keydown(function(key) {
+        switch(parseInt(key.which,10)) {
+			case 65:	// move left
+				$('img').animate({left: "-=10px"}, 'fast');
+				break;
+			case 83:	//move down
+				$('img').animate({top: "+=10px"}, 'fast');
+				break;
+			case 87:	// move up
+				$('img').animate({top: "-=10px"}, 'fast');
+				break;
+			case 68:	// move right
+				$('img').animate({left: '+=10px'}, 'fast');
+				break;
+			default:
+				break;
+		}
+	});
+});
+
+
+
+
+// jQuery UI
+
+// .effect(...)
+// jQuery UI's way to perform animations
+
+// .effect('explode')
+blows up the element
+
+// .effect('bounce', {times:2}, 200)
+has the element bounce twice for 200 ms
+
+// .effect('slide')
+slides the element into view 
+
+// makes the menu collapsible
+// to use it, add that menu div to the html file
+// set sections with <h3></h3>
+// write into those sections with <div></div> and <p></p>
+$(document).ready(function() {
+    $("#menu").accordion({collapsible: true, active: false});
+});
+
+// allows any div to be resizable
+// replace div with some element to make that element resizable
+$(document).ready(function() {
+	$("div").resizable();
+});
+
+
+// allows an ordered list to be selectable
+$(document).ready(function() {
+	$("ol").selectable();
+});
+
+// allows an ordered list to be sortable
+$(document).ready(function() {
+	$("ol").sortable();
+});
+
+
